@@ -1,0 +1,57 @@
+[
+  uuid(10CD851B-C378-4941-AECE-02D9837FC24F), 
+  version(1.0), 
+  helpstring("Project1 Library")
+    
+]
+library Project1
+{
+
+  importlib("stdole2.tlb");
+
+  [
+    uuid(9C9408AE-1DE9-4292-BCE7-716DAACB4098), 
+    version(1.0), 
+    helpstring("Dispatch interface for ServerClass Object"), 
+    dual, 
+    oleautomation
+  ]
+   interface IServerClass: IDispatch
+  {
+    [
+    id(0x00000001)
+    ]
+    HRESULT _stdcall Entry([in] BSTR str, [out] int * answ );
+    [
+    id(0x00000002)
+    ]
+    HRESULT _stdcall Protocol([in] BSTR str );
+    [
+    id(0x00000003)
+    ]
+    HRESULT _stdcall Dif([in] int x, [in] int y, [out] int * res );
+    [
+    id(0x00000004)
+    ]
+    HRESULT _stdcall Mul([in] int x, [in] int y, [out] int * res );
+    [
+    id(0x00000005)
+    ]
+    HRESULT _stdcall Sum([in] int x, [in] int y, [out] int * res );
+    [
+    id(0x00000006)
+    ]
+    HRESULT _stdcall Exit([in] BSTR str );
+  };
+
+  [
+    uuid(A60708C6-A80A-40BD-B664-272EFAF78708), 
+    version(1.0), 
+    helpstring("ServerClass Object")
+  ]
+  coclass ServerClass
+  {
+    [default] interface IServerClass;
+  };
+
+}; 
